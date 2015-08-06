@@ -1,5 +1,6 @@
 class PhotosController < ApplicationController
   before_action :set_photo, only: [:show, :edit, :update, :destroy]
+  before_action :correct_user, only: [:edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index, :show]
 
   
@@ -61,7 +62,12 @@ class PhotosController < ApplicationController
     def set_photo
       @photo = Photo.find(params[:id])
     end
+    #this makes sure that the user who is deleting and edit that Photoblog belongs to them, it will check see if the photoblog is yours if not you are back to the photos path
+    def correct_user 
+      @photo = current_user.photos.find_by(id: params[:id])
+      redirect_to photos_path, notice: "Not Your PhotoBlog Dude, So You Cannot edit or delete this Photoblog." if @photo.nil?
 
+    end 
   
     def photo_params
       params.require(:photo).permit(:content)
