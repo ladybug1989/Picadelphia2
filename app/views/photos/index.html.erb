@@ -6,6 +6,7 @@
   <thead>
     <tr>
       <th>Content</th>
+      <th>User's Email</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -13,7 +14,9 @@
   <tbody>
     <% @photos.each do |photo| %>
       <tr>
-        <td><%= photo.content %></td>
+        <td><%= photo.content %></td> 
+        <!-- if the photo has a user it will show it's users email if not it will be blank -->
+        <td><%= photo.user.email if photo.user %></td>
         <td><%= link_to 'Show', photo %></td>
         <td><%= link_to 'Edit', edit_photo_path(photo) %></td>
         <td><%= link_to 'Destroy', photo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
