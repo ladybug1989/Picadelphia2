@@ -1,6 +1,12 @@
 <div class=" center">
-<h1>Welcome to Picadelphia</h1>
-<p>Become A Member <%= link_to "Sign Up", "#", class: "btn btn-primary" %>
-<%= link_to "Log In", "#", class: "btn btn-primary" %>
-</p>
+	<h1>Welcome to Picadelphia</h1>
+	<!-- this is to not allow users to see the signed in and log in -->
+	<% if user_signed_in? %>
+	  <p> You are now apart of the team :)</p>
+	<%else %>
+	<!-- new users are able to register -->
+	<p> Become A Member <%= link_to "Sign Up", new_user_registration_path, class: "btn btn-primary" %>
+		<%= link_to "Log In", new_user_session_path, class: "btn btn-primary" %>
+	</p>
+	<% end %>
 </div>
