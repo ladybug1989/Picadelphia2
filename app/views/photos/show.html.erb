@@ -1,9 +1,11 @@
-<p id="notice"><%= notice %></p>
+<%= image_tag @photo.image.url(:medium) %>
 
 <p>
   <strong>Content:</strong>
   <%= @photo.content %>
 </p>
+<% if @photo.user == current_user %>
+  <%= link_to 'Edit', edit_photo_path(@photo) %> | 
+ <% end %>
 
-<%= link_to 'Edit', edit_photo_path(@photo) %> |
 <%= link_to 'Back', photos_path %>

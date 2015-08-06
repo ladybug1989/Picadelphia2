@@ -5,6 +5,7 @@
 <table>
   <thead>
     <tr>
+      <th>Image</th>
       <th>Content</th>
       <th>User's Email</th>
       <th colspan="3"></th>
@@ -14,6 +15,7 @@
   <tbody>
     <% @photos.each do |photo| %>
       <tr>
+      <td><%= image_tag photo.image.url(:medium) %> </td>
         <td><%= photo.content %></td> 
         <!-- if the photo has a user it will show it's users email if not it will be blank -->
         <td><%= photo.user.email if photo.user %></td>
