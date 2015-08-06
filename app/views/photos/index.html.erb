@@ -1,36 +1,18 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Listing Photos</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Image</th>
-      <th>Content</th>
-      <th>User's Email</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @photos.each do |photo| %>
-      <tr>
-      <td><%= image_tag photo.image.url(:medium) %> </td>
-        <td><%= photo.content %></td> 
-        <!-- if the photo has a user it will show it's users email if not it will be blank -->
-        <td><%= photo.user.email if photo.user %></td>
-        <td><%= link_to 'Show', photo %></td>
-        <!-- have to be the owner of the photoblog in order for you to edit or destroy it -->
-        <% if photo.user == current_user %>
-        <td><%= link_to 'Edit', edit_photo_path(photo) %></td>
-        <td><%= link_to 'Destroy', photo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <% end %>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-<% if user_signed_in? %>
- <%= link_to 'New Photo', new_photo_path %> 
+<div id="photos" class="transitions-enabled">
+<% @photos.each do |photo| %>
+ <div class="photo_box panel-default">
+  <%= image_tag photo.image.url(:medium) %>
+  <div class="panel-body">
+    <%= photo.content %>
+    <!-- if the photo has a user it will show it's users email if not it will be blank -->
+    <%= photo.user.email if photo.user %>
+    <%= link_to 'Show', photo %>
+    <!-- have to be the owner of the photoblog in order for you to edit or destroy it -->
+    <% if photo.user == current_user %>
+    <%= link_to 'Edit', edit_photo_path(photo) %>
+    <%= link_to 'Destroy', photo, method: :delete, data: { confirm: 'Dude,are you sure?' } %>
+      <% end %>
+    </div>
+  </div>
 <% end %>
+</div>
