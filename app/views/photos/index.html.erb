@@ -1,6 +1,6 @@
 <div id="photos" class="transitions-enabled">
 <% @photos.each do |photo| %>
- <div class="photo_box panel-default">
+ <div class="photo_box panel panel-default">
   <%= image_tag photo.image.url(:medium) %>
   <div class="panel-body">
     <%= photo.content %>
