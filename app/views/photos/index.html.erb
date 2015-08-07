@@ -8,7 +8,7 @@
     <div class="panel-body">
      <%= photo.content %><br/>
      <!-- if the photo has a user it will show it's users email if not it will be blank -->
-     <strong><%= photo.user.email if photo.user %></strong>
+     <strong><%= photo.user.name if photo.user %></strong>
      <!-- have to be the owner of the photoblog in order for you to edit or destroy it -->
       <% if photo.user == current_user %>
       <div class="actions">
