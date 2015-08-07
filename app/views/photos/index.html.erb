@@ -1,12 +1,11 @@
 <div id="photos" class="transitions-enabled">
 <% @photos.each do |photo| %>
  <div class="photo_box panel panel-default">
-  <%= image_tag photo.image.url(:medium) %>
+  <%= link_to image_tag(photo.image.url(:medium)), photo %>
   <div class="panel-body">
     <%= photo.content %>
     <!-- if the photo has a user it will show it's users email if not it will be blank -->
     <%= photo.user.email if photo.user %>
-    <%= link_to 'Show', photo %>
     <!-- have to be the owner of the photoblog in order for you to edit or destroy it -->
     <% if photo.user == current_user %>
     <%= link_to 'Edit', edit_photo_path(photo) %>
