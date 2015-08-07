@@ -19,6 +19,7 @@
         <!-- if the user is signed in , they will see this -->
         <% if user_signed_in? %>
         <!-- allows users to be able to delete account or update -->
+        <li><%= link_to 'New Photo', new_photo_path %></li> 
         <li> <%= link_to "Account Settings", edit_user_registration_path %></li>
         <li> <%= link_to "Log Out", destroy_user_session_path, method: :delete %></li>
         <% else %>

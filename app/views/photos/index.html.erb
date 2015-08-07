@@ -1,3 +1,4 @@
+
 <head>
   <link href='http://fonts.googleapis.com/css?family=Gloria+Hallelujah' rel='stylesheet' type='text/css'>
 </head>
@@ -29,3 +30,25 @@
 <br>
 
 <%= link_to 'New Photo', new_photo_path %>
+
+<%= render 'pages/home' unless user_signed_in? %>
+<div id="photos" class="transitions-enabled">
+<% @photos.each do |photo| %>
+ <div class="photo_box panel panel-default">
+     <%= link_to image_tag(photo.image.url(:medium)), photo %>
+    <div class="panel-body">
+     <%= photo.content %><br/>
+     <!-- if the photo has a user it will show it's users email if not it will be blank -->
+     <strong><%= photo.user.email if photo.user %></strong>
+     <!-- have to be the owner of the photoblog in order for you to edit or destroy it -->
+      <% if photo.user == current_user %>
+      <div class="actions">
+      <%= link_to 'Edit', edit_photo_path(photo) %>
+      <%= link_to 'Destroy', photo, method: :delete, data: { confirm: 'Dude,are you sure?' } %>
+       </div>
+      <% end %>
+     </div>
+  </div>
+  <% end %>
+</div>
+

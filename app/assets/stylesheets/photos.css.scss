@@ -4,3 +4,16 @@
 body {
 	font-family: 'Gloria Hallelujah', cursive;
 }
+
+ #photos {
+  margin: 0 auto;
+ }
+
+ .photo_box {
+  margin: 5px;
+  width: 214px;
+}
+
+.photo_box img {
+	width: 100%;
+}
