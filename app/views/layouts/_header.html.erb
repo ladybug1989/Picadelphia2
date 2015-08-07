@@ -20,9 +20,9 @@
         <% if user_signed_in? %>
         <!-- allows users to be able to delete account or update -->
         <li> <%= link_to "Account Settings", edit_user_registration_path %></li>
-        <li> <%= link_to "Logo Out", destroy_user_session_path, method: :delete %></li>
+        <li> <%= link_to "Log Out", destroy_user_session_path, method: :delete %></li>
         <% else %>
-        <li> <%= link_to "Sign In", new_user_session_path %></li>
+      <!--   <li> <%= link_to "Sign In", new_user_session_path %></li> -->
         <% end %>
       </ul>
     </div><!-- /.navbar-collapse -->
