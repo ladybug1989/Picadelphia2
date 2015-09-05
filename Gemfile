@@ -15,6 +15,10 @@ group :development, :test do
   gem 'spring'
   gem 'sqlite3'
 end
+group :production do
+     gem 'pg'
+     gem 'rails_12factor'
+end
 gem 'bootstrap-sass'
 gem 'devise', '~> 3.5.1'
 gem "paperclip", "~> 4.3"
